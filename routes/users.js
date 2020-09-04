@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 
 //User Model
 const User = require("../models/User");
+const { route } = require(".");
 
 //Login Page
 router.get("/login", (req,res) => res.render("login"));
@@ -12,6 +13,20 @@ router.get("/login", (req,res) => res.render("login"));
 router.get("/register", (req,res) => res.render("register"));
 
 //login Handle
+router.post("/login",(req, res) => {
+    const { email, password } = req.body;
+    let loginerr=[];
+
+    //check require fields
+    if(!email || !password){
+        loginerr.push({
+            msg:"Please fill in all fields"
+        })
+    }
+    else{
+        res.send("Hello ")
+    }
+})
 
 //Register Handle
 router.post('/register', (req, res) => {
